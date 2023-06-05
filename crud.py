@@ -21,6 +21,10 @@ def get_user_by_id(user_id):
     """Return a user by primary key."""
     return User.query.get(user_id)
 
+def get_user_by_email(email):
+    """Return a user by email."""
+    return User.query.filter(User.email == email).first()
+
 def create_movie(title, overview, release_date, poster_path):
     """Create and return a new movie."""
 
@@ -40,6 +44,8 @@ def get_movie_by_id(movie_id):
     """Return a movie by primary key."""
     return Movie.query.get(movie_id)
 
+
+
 def create_rating(user, movie, score):
     """Create and return a new rating."""
 
@@ -49,6 +55,11 @@ def create_rating(user, movie, score):
         score=score,
         )
     return rating
+
+def update_rating(rating_id, new_score):
+    """ Update a rating given rating_id and the updated score. """
+    rating = Rating.query.get(rating_id)
+    rating.score = new_score
 
 if __name__ == "__main__":
     from server import app
