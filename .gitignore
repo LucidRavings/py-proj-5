@@ -1,2 +1,4 @@
 requirements_original.txt
 venv
+config.sh
+__pycache__
